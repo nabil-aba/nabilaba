@@ -52,7 +52,7 @@ const en = {
         date: "2023 - 2026",
         description:
           "Pursued advanced research in software engineering and information systems. Actively contributed to community service projects through web system development for academic and social institutions.",
-        gpa: null,
+        gpa: "3.76 / 4.00 (Cum Laude)",
       },
       {
         institution: "Universitas Muhammadiyah Surakarta",
@@ -61,7 +61,7 @@ const en = {
         date: "2019 - 2023",
         description:
           "Focused on web development, software engineering, and information systems. Participated in Kampus Merdeka programs including Ruangguru and Kementerian Kominfo internship.",
-        gpa: "3.71",
+        gpa: "3.82 / 4.00 (Cum Laude)",
       },
     ],
   },
