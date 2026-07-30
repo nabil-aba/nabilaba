@@ -22,17 +22,17 @@ import React, { Suspense, lazy, useEffect, useState } from "react";
 import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
 import { LANGUAGES } from "../locales";
-import AIPerspective from "./AIPerspective";
-import About from "./About";
-import Education from "./Education";
-import Experiences from "./Experiences";
-import Footer from "./Footer";
 import Hero from "./Hero";
-import IntellectualProperty from "./IntellectualProperty";
-import Projects from "./Projects";
-import Publications from "./Publications";
-import Skills from "./Skills";
 
+const About = lazy(() => import("./About"));
+const Education = lazy(() => import("./Education"));
+const Experiences = lazy(() => import("./Experiences"));
+const Publications = lazy(() => import("./Publications"));
+const IntellectualProperty = lazy(() => import("./IntellectualProperty"));
+const Skills = lazy(() => import("./Skills"));
+const Projects = lazy(() => import("./Projects"));
+const AIPerspective = lazy(() => import("./AIPerspective"));
+const Footer = lazy(() => import("./Footer"));
 const BackgroundDecorations = lazy(() => import("./BackgroundDecorations"));
 
 const ChevronIcon = () => (
@@ -214,18 +214,32 @@ const Navbar = () => {
 export default function Index() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
-  const [showBg, setShowBg] = useState(false);
+  const [startLoad, setStartLoad] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowBg(true), 500);
-    return () => clearTimeout(timer);
+    const triggerLoad = () => setStartLoad(true);
+    const events = ["scroll", "mousemove", "touchstart", "keydown"];
+
+    events.forEach((event) =>
+      window.addEventListener(event, triggerLoad, {
+        once: true,
+        passive: true,
+      }),
+    );
+
+    const timer = setTimeout(triggerLoad, 3500);
+
+    return () => {
+      events.forEach((event) => window.removeEventListener(event, triggerLoad));
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <Box minH="100dvh">
       <Seo title="Portfolio" description={plainBio} />
 
-      {showBg && (
+      {startLoad && (
         <Suspense fallback={null}>
           <BackgroundDecorations />
         </Suspense>
@@ -235,17 +249,26 @@ export default function Index() {
 
       <main>
         <Hero />
-        <About />
-        <Education />
-        <Experiences />
-        <Publications />
-        <IntellectualProperty />
-        <Skills />
-        <Projects />
-        <AIPerspective />
+
+        {startLoad && (
+          <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
+            <About />
+            <Education />
+            <Experiences />
+            <Publications />
+            <IntellectualProperty />
+            <Skills />
+            <Projects />
+            <AIPerspective />
+          </Suspense>
+        )}
       </main>
 
-      <Footer />
+      {startLoad && (
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      )}
     </Box>
   );
 }

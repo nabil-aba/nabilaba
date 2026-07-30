@@ -16,16 +16,24 @@ export default defineConfig({
     cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("react-icons")) {
-              return "vendor-icons";
-            }
-            return "vendor";
-          }
+        manualChunks: {
+          "vendor-react": [
+            "react",
+            "react-dom",
+            "react-router-dom",
+            "react-helmet-async",
+          ],
+          "vendor-chakra": [
+            "@chakra-ui/react",
+            "@chakra-ui/icons",
+            "@emotion/react",
+            "@emotion/styled",
+          ],
+          "vendor-framer": ["framer-motion"],
+          "vendor-icons": ["react-icons"],
         },
       },
     },
-    chunkSizeWarningLimit: 1500,
+    chunkSizeWarningLimit: 1000,
   },
 });
