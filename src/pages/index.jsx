@@ -22,17 +22,17 @@ import React, { Suspense, lazy, useEffect, useState } from "react";
 import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
 import { LANGUAGES } from "../locales";
+import AIPerspective from "./AIPerspective";
+import About from "./About";
+import Education from "./Education";
+import Experiences from "./Experiences";
+import Footer from "./Footer";
 import Hero from "./Hero";
+import IntellectualProperty from "./IntellectualProperty";
+import Projects from "./Projects";
+import Publications from "./Publications";
+import Skills from "./Skills";
 
-const About = lazy(() => import("./About"));
-const Education = lazy(() => import("./Education"));
-const Experiences = lazy(() => import("./Experiences"));
-const Publications = lazy(() => import("./Publications"));
-const IntellectualProperty = lazy(() => import("./IntellectualProperty"));
-const Skills = lazy(() => import("./Skills"));
-const Projects = lazy(() => import("./Projects"));
-const AIPerspective = lazy(() => import("./AIPerspective"));
-const Footer = lazy(() => import("./Footer"));
 const BackgroundDecorations = lazy(() => import("./BackgroundDecorations"));
 
 const ChevronIcon = () => (
@@ -214,37 +214,18 @@ const Navbar = () => {
 export default function Index() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
-  const [isMounted, setIsMounted] = useState(false);
+  const [showBg, setShowBg] = useState(false);
 
   useEffect(() => {
-    const handleMount = () => setIsMounted(true);
-
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(handleMount, { timeout: 1500 });
-    } else {
-      setTimeout(handleMount, 1000);
-    }
-
-    window.addEventListener("scroll", handleMount, {
-      once: true,
-      passive: true,
-    });
-    window.addEventListener("touchstart", handleMount, {
-      once: true,
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", handleMount);
-      window.removeEventListener("touchstart", handleMount);
-    };
+    const timer = setTimeout(() => setShowBg(true), 500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <Box minH="100dvh">
       <Seo title="Portfolio" description={plainBio} />
 
-      {isMounted && (
+      {showBg && (
         <Suspense fallback={null}>
           <BackgroundDecorations />
         </Suspense>
@@ -254,26 +235,17 @@ export default function Index() {
 
       <main>
         <Hero />
-
-        {isMounted && (
-          <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
-            <About />
-            <Education />
-            <Experiences />
-            <Publications />
-            <IntellectualProperty />
-            <Skills />
-            <Projects />
-            <AIPerspective />
-          </Suspense>
-        )}
+        <About />
+        <Education />
+        <Experiences />
+        <Publications />
+        <IntellectualProperty />
+        <Skills />
+        <Projects />
+        <AIPerspective />
       </main>
 
-      {isMounted && (
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
-      )}
+      <Footer />
     </Box>
   );
 }

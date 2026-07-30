@@ -14,5 +14,18 @@ export default defineConfig({
     target: "esnext",
     minify: "esbuild",
     cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("react-icons")) {
+              return "vendor-icons";
+            }
+            return "vendor";
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1500,
   },
 });
