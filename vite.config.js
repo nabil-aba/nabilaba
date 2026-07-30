@@ -18,18 +18,19 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("framer-motion")) return "framer";
-            if (id.includes("@chakra-ui")) return "chakra";
-            if (id.includes("@emotion")) return "emotion";
-            if (id.includes("react-icons")) return "icons";
-            if (id.includes("react-dom") || id.includes("react/"))
-              return "react-core";
+            if (id.includes("react-icons")) return "vendor-icons";
+            if (
+              id.includes("@chakra-ui") ||
+              id.includes("@emotion") ||
+              id.includes("framer-motion")
+            )
+              return "vendor-ui";
             return "vendor";
           }
         },
       },
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 1500,
   },
   server: {
     open: true,
