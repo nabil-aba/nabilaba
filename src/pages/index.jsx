@@ -1,4 +1,3 @@
-import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -36,6 +35,30 @@ const AIPerspective = lazy(() => import("./AIPerspective"));
 const Footer = lazy(() => import("./Footer"));
 const BackgroundDecorations = lazy(() => import("./BackgroundDecorations"));
 
+const ChevronIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    width="1.2em"
+    height="1.2em"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+  </svg>
+);
+
+const MenuIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    width="1.5em"
+    height="1.5em"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+  </svg>
+);
+
 const LanguageSwitcher = () => {
   const { lang, changeLang } = useLang();
   const current = LANGUAGES.find((l) => l.code === lang);
@@ -49,7 +72,7 @@ const LanguageSwitcher = () => {
         borderRadius="full"
         px={3}
         fontWeight="bold"
-        rightIcon={<ChevronDownIcon aria-hidden="true" />}
+        rightIcon={<ChevronIcon />}
         _hover={{ bg: "cyan.400", color: "black" }}
       >
         {current.flag} {current.label}
@@ -150,7 +173,7 @@ const Navbar = () => {
         <HStack display={{ md: "none" }} spacing={2}>
           <LanguageSwitcher />
           <IconButton
-            icon={<HamburgerIcon aria-hidden="true" />}
+            icon={<MenuIcon />}
             aria-label="Open Menu"
             onClick={onOpen}
             variant="ghost"
@@ -188,18 +211,33 @@ const Navbar = () => {
   );
 };
 
-function App() {
+export default function Index() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    const handleMount = () => setIsMounted(true);
+
     if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(() => setIsMounted(true));
+      window.requestIdleCallback(handleMount, { timeout: 1500 });
     } else {
-      const timer = setTimeout(() => setIsMounted(true), 250);
-      return () => clearTimeout(timer);
+      setTimeout(handleMount, 1000);
     }
+
+    window.addEventListener("scroll", handleMount, {
+      once: true,
+      passive: true,
+    });
+    window.addEventListener("touchstart", handleMount, {
+      once: true,
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleMount);
+      window.removeEventListener("touchstart", handleMount);
+    };
   }, []);
 
   return (
@@ -218,7 +256,7 @@ function App() {
         <Hero />
 
         {isMounted && (
-          <Suspense fallback={<Box minH="50vh" />}>
+          <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
             <About />
             <Education />
             <Experiences />
@@ -239,5 +277,3 @@ function App() {
     </Box>
   );
 }
-
-export default App;
