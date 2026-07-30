@@ -4,6 +4,18 @@ const en = {
     label: "English",
     flag: "🇬🇧",
   },
+  seo: {
+    title: "Nabil Aba | Fullstack Enthusiast",
+    description:
+      "Aka Nabil Aba. A 'Newbie Permanen' crafting digital experiences from Indonesia. Graduate from UMS, transforming code into energetic solutions.",
+  },
+  notFound: {
+    title: "404 Not Found",
+    desc: "Page not found on the server.",
+    heading: "404",
+    sub: "LOST IN DIGITAL SPACE",
+    btn: "RETURN HOME",
+  },
   navbar: {
     about: "About",
     education: "Education",
@@ -15,20 +27,20 @@ const en = {
     contact: "Contact",
   },
   hero: {
-    tagline: "FULLSTACK ENTHUSIAST · M.Kom",
+    tagline: "FULLSTACK ENTHUSIAST • M.Kom",
     bio: 'Aka <b>Nabil Aba</b>. A "Newbie Permanen" crafting digital experiences from Indonesia. Graduate from UMS, transforming code into energetic solutions.',
     viewWork: "View My Work",
   },
   about: {
     title: "WHO AM I?",
-    p1: "I am <b>Nabil Aziz Bima Anggita</b>, a graduate in <b>Informatics</b> from <b>Universitas Muhammadiyah Surakarta</b> — holding both a <b>Bachelor's (S.Kom)</b> and <b>Master's degree (M.Kom)</b> in Informatics.",
+    p1: "I am <b>Nabil Aziz Bima Anggita</b>, a graduate in <b>Informatics</b> from <b>Universitas Muhammadiyah Surakarta</b> – holding both a <b>Bachelor's (S.Kom)</b> and <b>Master's degree (M.Kom)</b> in Informatics.",
     p2: "I have a deep interest in <b>Fullstack Engineering</b>, Android OS modification, and shell scripting.",
     p3: "I love exploring the intersection of logic and creativity through code.",
     stats: "Stats",
     repos: "Repositories on Github",
     androidWeb: "Android & Web Developer",
     chakra: "Chakra UI Specialist",
-    education: "S.Kom & M.Kom — Informatics, UMS",
+    education: "S.Kom & M.Kom • Informatics, UMS",
   },
   education: {
     title: "EDUCATION",
@@ -37,7 +49,7 @@ const en = {
         institution: "Universitas Muhammadiyah Surakarta",
         degree: "Master of Informatics (M.Kom)",
         field: "Informatics",
-        date: "2023 – 2026",
+        date: "2023 - 2026",
         description:
           "Pursued advanced research in software engineering and information systems. Actively contributed to community service projects through web system development for academic and social institutions.",
         gpa: null,
@@ -46,7 +58,7 @@ const en = {
         institution: "Universitas Muhammadiyah Surakarta",
         degree: "Bachelor of Informatics (S.Kom)",
         field: "Informatics",
-        date: "2019 – 2023",
+        date: "2019 - 2023",
         description:
           "Focused on web development, software engineering, and information systems. Participated in Kampus Merdeka programs including Ruangguru and Kementerian Kominfo internship.",
         gpa: "3.71",
@@ -55,21 +67,21 @@ const en = {
   },
   experiences: {
     title: "PROFESSIONAL JOURNEY",
-    viewConsulting: "View Consulting Projects →",
+    viewConsulting: "View Consulting Projects",
     items: [
       {
         company: "Universitas Muhammadiyah Surakarta",
         role: "Master's Degree + Web Consultant",
-        date: "2023 – 2026",
+        date: "2023 - 2026",
         description:
           "Pursued a Master's degree in Informatics (M.Kom) while actively contributing as a web developer consultant for community service (pengabdian) projects. Delivered custom web systems based on client requirements for academic and social institutions alongside publishing research and registering intellectual property.",
         type: "Education & Consulting",
         highlight: true,
         icon: "FaGraduationCap",
         achievements: [
-          "🎓 M.Kom — Informatics, UMS",
-          "📄 3 Publications",
-          "📜 3 Intellectual Property Rights (HKI)",
+          "• M.Kom - Informatics, UMS",
+          "• 3 Publications",
+          "• 3 Intellectual Property Rights (HKI)",
         ],
       },
       {
@@ -103,7 +115,7 @@ const en = {
         type: "Internship",
         highlight: true,
         icon: "FaTrophy",
-        achievements: ["🏆 Selected as 50 Best Apprentices"],
+        achievements: ["• Selected as 50 Best Apprentices"],
       },
       {
         company: "Ruangguru x Kampus Merdeka",
@@ -114,10 +126,7 @@ const en = {
         type: "Bootcamp",
         highlight: true,
         icon: "FaTrophy",
-        achievements: [
-          "🏆 Top 5 Finalist",
-          "📜 Final GPA: 4.00 (Perfect Score)",
-        ],
+        achievements: ["• Top 5 Finalist", "• Final GPA: 4.00 (Perfect Score)"],
       },
     ],
   },
@@ -389,8 +398,8 @@ const en = {
           tech: ["React", "MongoDB", "Express", "Node.js"],
           role: "Lead Developer & Co-Author",
           location: "SMA Muhammadiyah Al-Kautsar PK, Kartasura",
-          date: "2022 – 2023",
-          journal: "Jurnal Swabumi — BSI",
+          date: "2022 - 2023",
+          journal: "Jurnal Swabumi - BSI",
           journalLink:
             "https://ejournal.bsi.ac.id/ejurnal/index.php/swabumi/article/view/15965",
           hki: "EC00202343330",
@@ -406,7 +415,7 @@ const en = {
           role: "Web Developer (Contributor)",
           location: "Ranting Muhammadiyah, Desa Ngemplak",
           date: "2024",
-          journal: "JAIM — STIE AAS",
+          journal: "JAIM - STIE AAS",
           journalLink:
             "https://jurnal.stie-aas.ac.id/index.php/JAIM/article/view/13292",
           hki: null,
@@ -422,7 +431,7 @@ const en = {
           role: "Web Developer (Contributor)",
           location: "LKSA Wisma Asuhan Yatim Nurul Huda, Kartasura",
           date: "2024",
-          journal: "AbdiTeknoyasa — UMS",
+          journal: "AbdiTeknoyasa - UMS",
           journalLink:
             "https://journals2.ums.ac.id/abditeknoyasa/article/view/6613",
           hki: "EC00202423523",
@@ -432,13 +441,13 @@ const en = {
           demo: "#",
         },
         {
-          title: "Web Branding & Marketing — Pesantren Muhammad Al-Fatih",
+          title: "Web Branding & Marketing - Pesantren Muhammad Al-Fatih",
           desc: "Developed technology solutions for digital branding and product marketing strategy at Pondok Pesantren Muhammad Al-Fatih Sukoharjo. Contributed as developer for published community service research.",
           tech: ["Web", "Digital Marketing"],
           role: "Web Developer (Contributor)",
           location: "Pondok Pesantren Muhammad Al-Fatih, Sukoharjo",
           date: "2025",
-          journal: "AbdiTeknoyasa — UMS",
+          journal: "AbdiTeknoyasa - UMS",
           journalLink:
             "https://journals2.ums.ac.id/abditeknoyasa/article/view/12992",
           hki: null,
@@ -454,7 +463,7 @@ const en = {
           tech: ["Web", "System"],
           role: "Lead Developer",
           location: "PCM Kebakkramat",
-          date: "2025 – Present",
+          date: "2025 - Present",
           journal: null,
           journalLink: null,
           hki: "EC002025152998",

@@ -1,19 +1,20 @@
 import {
-  Container,
-  Heading,
-  SimpleGrid,
-  Box,
-  Flex,
-  Icon,
-  Text,
-  Link,
   Badge,
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Icon,
+  Link,
+  SimpleGrid,
+  Text,
 } from "@chakra-ui/react";
-import { FaBook, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FaBook, FaExternalLinkAlt } from "react-icons/fa";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function Publications() {
   const { t } = useLang();
@@ -29,6 +30,7 @@ export default function Publications() {
       >
         {t.publications.title}
       </Heading>
+
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
         {t.publications.items.map((paper, index) => (
           <MotionBox

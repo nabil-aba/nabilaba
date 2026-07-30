@@ -1,27 +1,28 @@
 import {
+  Badge,
   Box,
+  Button,
   Container,
   Flex,
+  HStack,
   Heading,
+  Icon,
   Text,
   VStack,
-  HStack,
-  Badge,
-  Icon,
-  Button,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import {
   FaCalendarAlt,
-  FaCode,
-  FaTrophy,
   FaChartLine,
+  FaCode,
   FaGraduationCap,
   FaProjectDiagram,
+  FaTrophy,
 } from "react-icons/fa";
-import { motion } from "framer-motion";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const ICON_MAP = {
   FaChartLine,

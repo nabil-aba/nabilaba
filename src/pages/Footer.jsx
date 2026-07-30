@@ -1,14 +1,15 @@
 import {
   Box,
   Container,
-  Heading,
-  Text,
   Flex,
+  Heading,
   Icon,
   Link,
+  Text,
 } from "@chakra-ui/react";
 import { FaEnvelope, FaGithub } from "react-icons/fa";
 import { SiLinkedin } from "react-icons/si";
+
 import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {

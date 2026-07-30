@@ -1,36 +1,36 @@
-import { useState, useEffect } from "react";
 import {
-  Container,
-  Heading,
-  Flex,
-  Box,
-  SimpleGrid,
-  Text,
-  Button,
-  HStack,
-  Tag,
-  Circle,
   Badge,
+  Box,
+  Button,
+  Circle,
+  Container,
+  Flex,
+  HStack,
+  Heading,
   Icon,
   Link,
+  SimpleGrid,
+  Tag,
+  Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import {
+  FaBook,
+  FaCertificate,
+  FaExternalLinkAlt,
   FaGithub,
   FaGlobe,
-  FaBook,
-  FaExternalLinkAlt,
-  FaCertificate,
 } from "react-icons/fa";
 import { SiCanva } from "react-icons/si";
-import { motion } from "framer-motion";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("React");
   const { t } = useLang();
-
   const projectData = t.projects.items;
 
   useEffect(() => {
@@ -139,7 +139,7 @@ export default function Projects() {
                       px={2}
                       fontSize="xs"
                     >
-                      ✍️ Co-Author
+                      ✓ Co-Author
                     </Badge>
                   ) : (
                     <Badge
@@ -149,7 +149,7 @@ export default function Projects() {
                       px={2}
                       fontSize="xs"
                     >
-                      🔧 Contributor
+                      • Contributor
                     </Badge>
                   )}
                 </HStack>
@@ -162,7 +162,7 @@ export default function Projects() {
                   📍 {project.location}
                 </Text>
                 <Text fontSize="xs" color="purple.300">
-                  📅 {project.date}
+                  🗓 {project.date}
                 </Text>
                 <Text fontSize="xs" color="pink.300" fontWeight="bold">
                   {t.projects.contributedAs}: {project.role}
@@ -281,7 +281,7 @@ export default function Projects() {
                 )}
                 {project.date && (
                   <Text fontSize="xs" color="purple.300" mb={2} zIndex={1}>
-                    📅 {project.date}
+                    🗓 {project.date}
                   </Text>
                 )}
                 {project.role && (
@@ -338,7 +338,6 @@ export default function Projects() {
                       ? t.projects.viewMaterial
                       : t.projects.repository}
                   </Button>
-
                   {!project.location && (
                     <Button
                       as="a"

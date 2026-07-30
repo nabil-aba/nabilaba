@@ -1,25 +1,26 @@
 import {
-  Container,
-  Heading,
-  VStack,
+  Badge,
   Box,
+  Button,
+  Container,
   Flex,
   HStack,
-  Text,
-  Badge,
-  Button,
+  Heading,
   Icon,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import {
   FaCertificate,
   FaCopyright,
-  FaUserTie,
   FaExternalLinkAlt,
+  FaUserTie,
 } from "react-icons/fa";
-import { motion } from "framer-motion";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function IntellectualProperty() {
   const { t } = useLang();
@@ -79,9 +80,11 @@ export default function IntellectualProperty() {
                     ID: {ipr.id}
                   </Badge>
                 </HStack>
+
                 <Heading size="md" mb={3} color="white">
                   {ipr.title}
                 </Heading>
+
                 <HStack
                   spacing={6}
                   color="gray.300"

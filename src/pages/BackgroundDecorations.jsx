@@ -1,8 +1,8 @@
 import { Box, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-const MotionBox = motion(Box);
-const MotionText = motion(Text);
+const MotionBox = motion.create(Box);
+const MotionText = motion.create(Text);
 
 const AnimatedWavyDashedLine = ({ top, duration, color }) => {
   const dashArrayValue = "15 30";
@@ -76,10 +76,10 @@ const GridBackground = () => (
 
 export default function BackgroundDecorations() {
   const jpChars = [
-    { char: "技術", x: "10%", y: "20%", delay: 0 },
-    { char: "情熱", x: "80%", y: "15%", delay: 2 },
+    { char: "創造", x: "10%", y: "20%", delay: 0 },
+    { char: "技術", x: "80%", y: "15%", delay: 2 },
     { char: "未来", x: "20%", y: "70%", delay: 4 },
-    { char: "創造", x: "85%", y: "60%", delay: 1 },
+    { char: "革新", x: "85%", y: "60%", delay: 1 },
   ];
 
   const shapes = [
@@ -114,6 +114,7 @@ export default function BackgroundDecorations() {
         duration={15}
         color="rgba(183, 63, 213, 0.5)"
       />
+
       {jpChars.map((item, i) => (
         <MotionText
           key={i}
@@ -130,6 +131,7 @@ export default function BackgroundDecorations() {
           {item.char}
         </MotionText>
       ))}
+
       {shapes.map((shape, i) => (
         <MotionBox
           key={`shape-${i}`}

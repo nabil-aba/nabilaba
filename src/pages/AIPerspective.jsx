@@ -3,21 +3,21 @@ import {
   Container,
   Flex,
   Heading,
-  Text,
   Icon,
-  Wrap,
   Tag,
+  Text,
+  Wrap,
 } from "@chakra-ui/react";
-import { FaStackOverflow, FaBrain, FaRobot } from "react-icons/fa";
-import { SiGeeksforgeeks } from "react-icons/si";
 import { motion } from "framer-motion";
+import { FaBrain, FaRobot, FaStackOverflow } from "react-icons/fa";
+import { SiGeeksforgeeks } from "react-icons/si";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function AIPerspective() {
   const { t } = useLang();
-
   const p1Parts = t.aiPerspective.p1.split("<cyan>");
   const p1Before = p1Parts[0];
   const p1Rest = p1Parts[1]?.split("</cyan>");
@@ -34,7 +34,7 @@ export default function AIPerspective() {
         borderColor="whiteAlpha.200"
         position="relative"
         overflow="hidden"
-        whileHover={{ borderColor: "cyan.500" }}
+        whileHover={{ borderColor: "#00B5D8" }}
       >
         <Box
           position="absolute"
@@ -47,7 +47,6 @@ export default function AIPerspective() {
           backgroundPosition="0 0, 10px 10px"
           backgroundSize="20px 20px"
         />
-
         <Flex
           direction={{ base: "column", md: "row" }}
           align="center"

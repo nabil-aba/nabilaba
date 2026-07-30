@@ -1,19 +1,20 @@
 import {
-  Container,
-  Heading,
-  VStack,
+  Badge,
   Box,
+  Container,
   Flex,
   HStack,
-  Text,
-  Badge,
+  Heading,
   Icon,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
-import { FaGraduationCap, FaCalendarAlt, FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FaCalendarAlt, FaGraduationCap, FaStar } from "react-icons/fa";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function Education() {
   const { t } = useLang();
@@ -42,7 +43,7 @@ export default function Education() {
             boxShadow={
               index === 0 ? "0 0 20px rgba(236, 201, 75, 0.1)" : "none"
             }
-            whileHover={{ borderColor: "yellow.400" }}
+            whileHover={{ borderColor: "#ECC94B" }}
           >
             <Flex
               direction={{ base: "column", md: "row" }}

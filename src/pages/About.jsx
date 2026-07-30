@@ -1,22 +1,22 @@
 import {
+  Box,
   Container,
   Flex,
-  Box,
   Heading,
-  Text,
   Icon,
+  Text,
   VStack,
 } from "@chakra-ui/react";
-import { FaCode, FaAndroid, FaGraduationCap } from "react-icons/fa";
-import { SiChakraui } from "react-icons/si";
 import { motion } from "framer-motion";
+import { FaAndroid, FaCode, FaGraduationCap } from "react-icons/fa";
+import { SiChakraui } from "react-icons/si";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function About() {
   const { t } = useLang();
-
   return (
     <Container maxW="container.lg" py={20} id="about">
       <Flex direction={{ base: "column", lg: "row" }} align="center" gap={10}>

@@ -1,40 +1,42 @@
 import {
+  Box,
   Container,
   Heading,
-  SimpleGrid,
-  Box,
-  Text,
   Icon,
+  SimpleGrid,
+  Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import {
-  FaGithub,
-  FaEnvelope,
-  FaReact,
-  FaNodeJs,
-  FaCode,
-  FaServer,
-  FaRobot,
+  FaBlogger,
   FaBolt,
-  FaNetworkWired,
-  FaMarkdown,
-  FaSmile,
+  FaCode,
+  FaEnvelope,
+  FaGithub,
   FaJava,
+  FaMarkdown,
+  FaNetworkWired,
+  FaNodeJs,
   FaNpm,
   FaPython,
+  FaReact,
+  FaRobot,
+  FaServer,
+  FaSmile,
+  FaWhatsapp,
   FaWordpress,
   FaYarn,
-  FaWhatsapp,
-  FaBlogger,
 } from "react-icons/fa";
 import {
-  SiChakraui,
-  SiJavascript,
-  SiHtml5,
-  SiCss3,
   SiBootstrap,
+  SiCanva,
+  SiChakraui,
+  SiCss3,
   SiExpress,
   SiGatsby,
   SiHeroku,
+  SiHtml5,
+  SiJavascript,
   SiKaggle,
   SiMongodb,
   SiMysql,
@@ -42,15 +44,14 @@ import {
   SiPhp,
   SiPostgresql,
   SiVercel,
-  SiVite,
   SiVisualstudiocode,
+  SiVite,
   SiXampp,
-  SiCanva,
 } from "react-icons/si";
-import { motion } from "framer-motion";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const skills = [
   { name: "aaPanel", icon: FaServer, color: "#20B2AA" },
@@ -108,6 +109,7 @@ export default function Skills() {
       >
         {t.skills.title}
       </Heading>
+
       <SimpleGrid columns={{ base: 2, md: 4, lg: 5 }} spacing={8}>
         {skills.map((skill, index) => (
           <MotionBox

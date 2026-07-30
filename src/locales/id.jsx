@@ -4,6 +4,18 @@ const id = {
     label: "Indonesia",
     flag: "🇮🇩",
   },
+  seo: {
+    title: "Nabil Aba | Antusias Fullstack",
+    description:
+      'Aka Nabil Aba. Seorang "Newbie Permanen" yang membangun pengalaman digital dari Indonesia. Lulusan UMS, mengubah kode menjadi solusi yang berenergi.',
+  },
+  notFound: {
+    title: "404 Tidak Ditemukan",
+    desc: "Halaman tidak ditemukan di server.",
+    heading: "404",
+    sub: "HILANG DI RUANG DIGITAL",
+    btn: "KEMBALI KE BERANDA",
+  },
   navbar: {
     about: "Tentang",
     education: "Pendidikan",
@@ -15,20 +27,20 @@ const id = {
     contact: "Kontak",
   },
   hero: {
-    tagline: "ANTUSIAS FULLSTACK · M.Kom",
+    tagline: "ANTUSIAS FULLSTACK • M.Kom",
     bio: 'Aka <b>Nabil Aba</b>. Seorang "Newbie Permanen" yang membangun pengalaman digital dari Indonesia. Lulusan UMS, mengubah kode menjadi solusi yang berenergi.',
     viewWork: "Lihat Karya Saya",
   },
   about: {
     title: "SIAPA AKU?",
-    p1: "Saya <b>Nabil Aziz Bima Anggita</b>, lulusan <b>Informatika</b> dari <b>Universitas Muhammadiyah Surakarta</b> — dengan gelar <b>Sarjana (S.Kom)</b> dan <b>Magister (M.Kom)</b> Informatika.",
+    p1: "Saya <b>Nabil Aziz Bima Anggita</b>, lulusan <b>Informatika</b> dari <b>Universitas Muhammadiyah Surakarta</b> – dengan gelar <b>Sarjana (S.Kom)</b> dan <b>Magister (M.Kom)</b> Informatika.",
     p2: "Saya memiliki minat mendalam pada <b>Fullstack Engineering</b>, modifikasi Android OS, dan shell scripting.",
     p3: "Saya suka mengeksplorasi perpaduan logika dan kreativitas melalui kode.",
     stats: "Statistik",
     repos: "Repositori di Github",
     androidWeb: "Developer Android & Web",
     chakra: "Spesialis Chakra UI",
-    education: "S.Kom & M.Kom — Informatika, UMS",
+    education: "S.Kom & M.Kom • Informatika, UMS",
   },
   education: {
     title: "PENDIDIKAN",
@@ -37,7 +49,7 @@ const id = {
         institution: "Universitas Muhammadiyah Surakarta",
         degree: "Magister Informatika (M.Kom)",
         field: "Informatika",
-        date: "2023 – 2026",
+        date: "2023 - 2026",
         description:
           "Mendalami riset rekayasa perangkat lunak dan sistem informasi. Aktif berkontribusi dalam kegiatan pengabdian masyarakat melalui pengembangan sistem web untuk institusi akademik dan sosial.",
         gpa: "3.76 / 4.00 (Cum Laude)",
@@ -46,7 +58,7 @@ const id = {
         institution: "Universitas Muhammadiyah Surakarta",
         degree: "Sarjana Informatika (S.Kom)",
         field: "Informatika",
-        date: "2019 – 2023",
+        date: "2019 - 2023",
         description:
           "Fokus pada pengembangan web, rekayasa perangkat lunak, dan sistem informasi. Mengikuti program Kampus Merdeka termasuk Ruangguru dan magang Kementerian Kominfo.",
         gpa: "3.82 / 4.00 (Cum Laude)",
@@ -55,21 +67,21 @@ const id = {
   },
   experiences: {
     title: "PERJALANAN PROFESIONAL",
-    viewConsulting: "Lihat Proyek Konsultasi →",
+    viewConsulting: "Lihat Proyek Konsultasi",
     items: [
       {
         company: "Universitas Muhammadiyah Surakarta",
         role: "S2 Informatika + Konsultan Web",
-        date: "2023 – 2026",
+        date: "2023 - 2026",
         description:
           "Menempuh S2 Informatika (M.Kom) sambil aktif berkontribusi sebagai konsultan web developer dalam proyek pengabdian masyarakat. Menghasilkan sistem web sesuai kebutuhan klien untuk institusi akademik dan sosial, serta mempublikasikan riset dan mendaftarkan kekayaan intelektual.",
         type: "Pendidikan & Konsultasi",
         highlight: true,
         icon: "FaGraduationCap",
         achievements: [
-          "🎓 M.Kom — Informatika, UMS",
-          "📄 3 Publikasi",
-          "📜 3 Hak Kekayaan Intelektual (HKI)",
+          "• M.Kom - Informatika, UMS",
+          "• 3 Publikasi",
+          "• 3 Hak Kekayaan Intelektual (HKI)",
         ],
       },
       {
@@ -103,7 +115,7 @@ const id = {
         type: "Magang",
         highlight: true,
         icon: "FaTrophy",
-        achievements: ["🏆 Terpilih sebagai 50 Magang Terbaik"],
+        achievements: ["• Terpilih sebagai 50 Magang Terbaik"],
       },
       {
         company: "Ruangguru x Kampus Merdeka",
@@ -114,10 +126,7 @@ const id = {
         type: "Bootcamp",
         highlight: true,
         icon: "FaTrophy",
-        achievements: [
-          "🏆 Top 5 Finalis",
-          "📜 IPK Akhir: 4.00 (Nilai Sempurna)",
-        ],
+        achievements: ["• Top 5 Finalis", "• IPK Akhir: 4.00 (Nilai Sempurna)"],
       },
     ],
   },
@@ -389,8 +398,8 @@ const id = {
           tech: ["React", "MongoDB", "Express", "Node.js"],
           role: "Lead Developer & Co-Author",
           location: "SMA Muhammadiyah Al-Kautsar PK, Kartasura",
-          date: "2022 – 2023",
-          journal: "Jurnal Swabumi — BSI",
+          date: "2022 - 2023",
+          journal: "Jurnal Swabumi - BSI",
           journalLink:
             "https://ejournal.bsi.ac.id/ejurnal/index.php/swabumi/article/view/15965",
           hki: "EC00202343330",
@@ -406,7 +415,7 @@ const id = {
           role: "Web Developer (Kontributor)",
           location: "Ranting Muhammadiyah, Desa Ngemplak",
           date: "2024",
-          journal: "JAIM — STIE AAS",
+          journal: "JAIM - STIE AAS",
           journalLink:
             "https://jurnal.stie-aas.ac.id/index.php/JAIM/article/view/13292",
           hki: null,
@@ -422,7 +431,7 @@ const id = {
           role: "Web Developer (Kontributor)",
           location: "LKSA Wisma Asuhan Yatim Nurul Huda, Kartasura",
           date: "2024",
-          journal: "AbdiTeknoyasa — UMS",
+          journal: "AbdiTeknoyasa - UMS",
           journalLink:
             "https://journals2.ums.ac.id/abditeknoyasa/article/view/6613",
           hki: "EC00202423523",
@@ -432,13 +441,13 @@ const id = {
           demo: "#",
         },
         {
-          title: "Web Branding & Marketing — Pesantren Muhammad Al-Fatih",
+          title: "Web Branding & Marketing - Pesantren Muhammad Al-Fatih",
           desc: "Mengembangkan solusi teknologi untuk strategi branding digital dan pemasaran produk di Pondok Pesantren Muhammad Al-Fatih Sukoharjo. Berkontribusi sebagai developer pada riset pengabdian yang dipublikasikan.",
           tech: ["Web", "Digital Marketing"],
           role: "Web Developer (Kontributor)",
           location: "Pondok Pesantren Muhammad Al-Fatih, Sukoharjo",
           date: "2025",
-          journal: "AbdiTeknoyasa — UMS",
+          journal: "AbdiTeknoyasa - UMS",
           journalLink:
             "https://journals2.ums.ac.id/abditeknoyasa/article/view/12992",
           hki: null,
@@ -454,7 +463,7 @@ const id = {
           tech: ["Web", "System"],
           role: "Lead Developer",
           location: "PCM Kebakkramat",
-          date: "2025 – Sekarang",
+          date: "2025 - Sekarang",
           journal: null,
           journalLink: null,
           hki: "EC002025152998",

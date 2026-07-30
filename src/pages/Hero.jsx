@@ -1,12 +1,22 @@
-import { Flex, Box, Heading, Text, Button } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
+
 import { useLang } from "../context/LanguageContext";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function Hero() {
   const { t } = useLang();
+
+  const handleScrollToProjects = (e) => {
+    e.preventDefault();
+    const element = document.getElementById("projects");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  };
 
   return (
     <Flex
@@ -59,8 +69,7 @@ export default function Hero() {
           px={4}
         >
           <Button
-            as="a"
-            href="#projects"
+            onClick={handleScrollToProjects}
             size="lg"
             colorScheme="purple"
             borderRadius="full"

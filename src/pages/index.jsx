@@ -1,41 +1,42 @@
+import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Flex,
-  Link,
-  VStack,
-  HStack,
-  IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  useDisclosure,
   Drawer,
   DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
   DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
+  Flex,
+  HStack,
+  IconButton,
+  Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import Hero from "./Hero";
-import Publications from "./Publications";
-import AIPerspective from "./AIPerspective";
-import About from "./About";
-import Footer from "./Footer";
-import Projects from "./Projects";
-import Skills from "./Skills";
-import IntellectualProperty from "./IntellectualProperty";
-import Experiences from "./Experiences";
-import Education from "./Education";
-import BackgroundDecorations from "./BackgroundDecorations";
+
+import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
 import { LANGUAGES } from "../locales";
+import AIPerspective from "./AIPerspective";
+import About from "./About";
+import BackgroundDecorations from "./BackgroundDecorations";
+import Education from "./Education";
+import Experiences from "./Experiences";
+import Footer from "./Footer";
+import Hero from "./Hero";
+import IntellectualProperty from "./IntellectualProperty";
+import Projects from "./Projects";
+import Publications from "./Publications";
+import Skills from "./Skills";
 
 const LanguageSwitcher = () => {
   const { lang, changeLang } = useLang();
   const current = LANGUAGES.find((l) => l.code === lang);
-
   return (
     <Menu>
       <MenuButton
@@ -77,7 +78,6 @@ const LanguageSwitcher = () => {
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useLang();
-
   const navLinks = [
     { label: t.navbar.about, anchor: "about" },
     { label: t.navbar.education, anchor: "education" },
@@ -88,6 +88,15 @@ const Navbar = () => {
     { label: t.navbar.projects, anchor: "projects" },
     { label: t.navbar.contact, anchor: "contact" },
   ];
+
+  const handleScroll = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  };
 
   return (
     <Box
@@ -106,16 +115,18 @@ const Navbar = () => {
         mx="auto"
       >
         <Link
-          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.history.replaceState(null, "", window.location.pathname);
+          }}
           bgGradient="linear(to-r, cyan.400, purple.500)"
           bgClip="text"
           fontWeight="extrabold"
           cursor="pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           NABIL ABA
         </Link>
-
         <HStack
           spacing={6}
           display={{ base: "none", md: "flex" }}
@@ -125,15 +136,15 @@ const Navbar = () => {
           {navLinks.map((item) => (
             <Link
               key={item.anchor}
-              href={`#${item.anchor}`}
+              onClick={(e) => handleScroll(e, item.anchor)}
               _hover={{ color: "cyan.400", textDecoration: "none" }}
+              cursor="pointer"
             >
               {item.label.toUpperCase()}
             </Link>
           ))}
           <LanguageSwitcher />
         </HStack>
-
         <HStack display={{ md: "none" }} spacing={2}>
           <LanguageSwitcher />
           <IconButton
@@ -146,7 +157,6 @@ const Navbar = () => {
           />
         </HStack>
       </Flex>
-
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bg="#0a0a12" color="white">
@@ -156,11 +166,14 @@ const Navbar = () => {
               {navLinks.map((item) => (
                 <Link
                   key={item.anchor}
-                  href={`#${item.anchor}`}
-                  onClick={onClose}
+                  onClick={(e) => {
+                    handleScroll(e, item.anchor);
+                    onClose();
+                  }}
                   fontSize="xl"
                   fontWeight="bold"
                   _hover={{ color: "cyan.400", textDecoration: "none" }}
+                  cursor="pointer"
                 >
                   {item.label.toUpperCase()}
                 </Link>
@@ -174,8 +187,12 @@ const Navbar = () => {
 };
 
 function App() {
+  const { t } = useLang();
+  const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
+  
   return (
     <Box minH="100dvh">
+      <Seo title="Portfolio" description={plainBio} />
       <BackgroundDecorations />
       <Navbar />
       <main>
