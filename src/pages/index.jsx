@@ -115,6 +115,7 @@ const Navbar = () => {
         mx="auto"
       >
         <Link
+          href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -123,7 +124,6 @@ const Navbar = () => {
           bgGradient="linear(to-r, cyan.400, purple.500)"
           bgClip="text"
           fontWeight="extrabold"
-          cursor="pointer"
         >
           NABIL ABA
         </Link>
@@ -136,9 +136,9 @@ const Navbar = () => {
           {navLinks.map((item) => (
             <Link
               key={item.anchor}
+              href={`#${item.anchor}`}
               onClick={(e) => handleScroll(e, item.anchor)}
               _hover={{ color: "cyan.400", textDecoration: "none" }}
-              cursor="pointer"
             >
               {item.label.toUpperCase()}
             </Link>
@@ -166,6 +166,7 @@ const Navbar = () => {
               {navLinks.map((item) => (
                 <Link
                   key={item.anchor}
+                  href={`#${item.anchor}`}
                   onClick={(e) => {
                     handleScroll(e, item.anchor);
                     onClose();
@@ -173,7 +174,6 @@ const Navbar = () => {
                   fontSize="xl"
                   fontWeight="bold"
                   _hover={{ color: "cyan.400", textDecoration: "none" }}
-                  cursor="pointer"
                 >
                   {item.label.toUpperCase()}
                 </Link>
@@ -189,7 +189,7 @@ const Navbar = () => {
 function App() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
-  
+
   return (
     <Box minH="100dvh">
       <Seo title="Portfolio" description={plainBio} />

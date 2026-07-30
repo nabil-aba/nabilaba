@@ -32,33 +32,47 @@ export default function Footer() {
           {t.footer.sub}
         </Text>
         <Flex justify="center" gap={6} mb={8}>
-          <Link href="mailto:nabilazizbimaanggita@gmail.com">
+          <Link
+            href="mailto:nabilazizbimaanggita@gmail.com"
+            aria-label="Email Contact"
+          >
             <Icon
               as={FaEnvelope}
               boxSize={8}
+              aria-hidden="true"
               _hover={{ color: "cyan.400" }}
               transition="color 0.2s"
             />
           </Link>
-          <Link href="https://github.com/nabilaba" isExternal>
+          <Link
+            href="https://github.com/nabilaba"
+            isExternal
+            aria-label="GitHub Profile"
+          >
             <Icon
               as={FaGithub}
               boxSize={8}
+              aria-hidden="true"
               _hover={{ color: "purple.400" }}
               transition="color 0.2s"
             />
           </Link>
-          <Link href="https://www.linkedin.com/in/nabilaba/" isExternal>
+          <Link
+            href="https://www.linkedin.com/in/nabilaba/"
+            isExternal
+            aria-label="LinkedIn Profile"
+          >
             <Icon
               as={SiLinkedin}
               boxSize={8}
+              aria-hidden="true"
               _hover={{ color: "blue.400" }}
               transition="color 0.2s"
             />
           </Link>
         </Flex>
         <Text fontSize="sm" color="gray.600">
-          © {new Date().getFullYear()} Nabil Aziz Bima Anggita (Nabil Aba).{" "}
+          &copy; {new Date().getFullYear()} Nabil Aziz Bima Anggita (Nabil Aba).{" "}
           <br />
           {t.footer.copyright}
         </Text>
