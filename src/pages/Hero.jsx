@@ -1,10 +1,7 @@
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
 import { useLang } from "../context/LanguageContext";
-
-const MotionBox = motion.create(Box);
 
 export default function Hero() {
   const { t } = useLang();
@@ -29,10 +26,14 @@ export default function Hero() {
       position="relative"
       id="home"
     >
-      <MotionBox
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+      <Box
+        animation="fadeUp 0.6s ease-out"
+        sx={{
+          "@keyframes fadeUp": {
+            "0%": { opacity: 0, transform: "translateY(20px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+          },
+        }}
       >
         <Text color="cyan.400" letterSpacing="widest" fontWeight="bold" mb={2}>
           {t.hero.tagline}
@@ -89,7 +90,7 @@ export default function Hero() {
             Github
           </Button>
         </Flex>
-      </MotionBox>
+      </Box>
     </Flex>
   );
 }

@@ -18,21 +18,23 @@ import {
   VStack,
   useDisclosure,
 } from "@chakra-ui/react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 
 import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
 import { LANGUAGES } from "../locales";
-import AIPerspective from "./AIPerspective";
-import About from "./About";
-import BackgroundDecorations from "./BackgroundDecorations";
-import Education from "./Education";
-import Experiences from "./Experiences";
-import Footer from "./Footer";
 import Hero from "./Hero";
-import IntellectualProperty from "./IntellectualProperty";
-import Projects from "./Projects";
-import Publications from "./Publications";
-import Skills from "./Skills";
+
+const About = lazy(() => import("./About"));
+const Education = lazy(() => import("./Education"));
+const Experiences = lazy(() => import("./Experiences"));
+const Publications = lazy(() => import("./Publications"));
+const IntellectualProperty = lazy(() => import("./IntellectualProperty"));
+const Skills = lazy(() => import("./Skills"));
+const Projects = lazy(() => import("./Projects"));
+const AIPerspective = lazy(() => import("./AIPerspective"));
+const Footer = lazy(() => import("./Footer"));
+const BackgroundDecorations = lazy(() => import("./BackgroundDecorations"));
 
 const LanguageSwitcher = () => {
   const { lang, changeLang } = useLang();
@@ -189,24 +191,47 @@ const Navbar = () => {
 function App() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Box minH="100dvh">
       <Seo title="Portfolio" description={plainBio} />
-      <BackgroundDecorations />
+
+      {isMounted && (
+        <Suspense fallback={null}>
+          <BackgroundDecorations />
+        </Suspense>
+      )}
+
       <Navbar />
+
       <main>
         <Hero />
-        <About />
-        <Education />
-        <Experiences />
-        <Publications />
-        <IntellectualProperty />
-        <Skills />
-        <Projects />
-        <AIPerspective />
+
+        {isMounted && (
+          <Suspense fallback={<Box minH="50vh" />}>
+            <About />
+            <Education />
+            <Experiences />
+            <Publications />
+            <IntellectualProperty />
+            <Skills />
+            <Projects />
+            <AIPerspective />
+          </Suspense>
+        )}
       </main>
-      <Footer />
+
+      {isMounted && (
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      )}
     </Box>
   );
 }
