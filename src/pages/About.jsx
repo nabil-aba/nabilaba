@@ -60,21 +60,41 @@ export default function About() {
               {t.about.stats}
             </Heading>
             <Flex align="center" gap={3}>
-              <Icon as={FaGraduationCap} boxSize={6} color="yellow.400" />
+              <Icon
+                as={FaGraduationCap}
+                boxSize={6}
+                color="yellow.400"
+                aria-hidden="true"
+              />
               <Text>{t.about.education}</Text>
             </Flex>
             <Flex align="center" gap={3}>
-              <Icon as={FaCode} boxSize={6} color="cyan.400" />
+              <Icon
+                as={FaCode}
+                boxSize={6}
+                color="cyan.400"
+                aria-hidden="true"
+              />
               <Text>
                 <b>45+</b> {t.about.repos}
               </Text>
             </Flex>
             <Flex align="center" gap={3}>
-              <Icon as={FaAndroid} boxSize={6} color="green.400" />
+              <Icon
+                as={FaAndroid}
+                boxSize={6}
+                color="green.400"
+                aria-hidden="true"
+              />
               <Text>{t.about.androidWeb}</Text>
             </Flex>
             <Flex align="center" gap={3}>
-              <Icon as={SiChakraui} boxSize={6} color="teal.300" />
+              <Icon
+                as={SiChakraui}
+                boxSize={6}
+                color="teal.300"
+                aria-hidden="true"
+              />
               <Text>{t.about.chakra}</Text>
             </Flex>
           </VStack>

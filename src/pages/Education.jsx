@@ -60,6 +60,7 @@ export default function Education() {
                   as={FaGraduationCap}
                   boxSize={8}
                   color={index === 0 ? "yellow.400" : "gray.400"}
+                  aria-hidden="true"
                 />
               </Box>
 
@@ -75,7 +76,7 @@ export default function Education() {
                     {edu.degree}
                   </Badge>
                   <HStack color="gray.400" fontSize="sm">
-                    <Icon as={FaCalendarAlt} />
+                    <Icon as={FaCalendarAlt} aria-hidden="true" />
                     <Text>{edu.date}</Text>
                   </HStack>
                 </HStack>
@@ -92,7 +93,12 @@ export default function Education() {
 
                 {edu.gpa && (
                   <HStack>
-                    <Icon as={FaStar} color="yellow.400" boxSize={4} />
+                    <Icon
+                      as={FaStar}
+                      color="yellow.400"
+                      boxSize={4}
+                      aria-hidden="true"
+                    />
                     <Text fontSize="sm" color="yellow.300" fontWeight="bold">
                       GPA: {edu.gpa}
                     </Text>

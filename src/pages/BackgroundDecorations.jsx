@@ -23,6 +23,7 @@ const AnimatedWavyDashedLine = ({ top, duration, color }) => {
         height="100%"
         viewBox="0 0 1000 100"
         preserveAspectRatio="none"
+        aria-hidden="true"
       >
         <motion.path
           d="M-5,50 C150,0 350,100 500,50 C650,0 850,100 1005,50"

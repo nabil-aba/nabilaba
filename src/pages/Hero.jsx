@@ -84,7 +84,7 @@ export default function Hero() {
             size="lg"
             variant="outline"
             borderRadius="full"
-            leftIcon={<FaGithub />}
+            leftIcon={<FaGithub aria-hidden="true" />}
           >
             Github
           </Button>

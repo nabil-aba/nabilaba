@@ -190,8 +190,10 @@ export default function Projects() {
                         w="full"
                         variant="outline"
                         colorScheme="purple"
-                        leftIcon={<FaBook />}
-                        rightIcon={<FaExternalLinkAlt size="10px" />}
+                        leftIcon={<FaBook aria-hidden="true" />}
+                        rightIcon={
+                          <FaExternalLinkAlt size="10px" aria-hidden="true" />
+                        }
                         isDisabled={
                           !project.journalLink || project.journalLink === "#"
                         }
@@ -211,7 +213,7 @@ export default function Projects() {
                       fontSize="xs"
                       color="orange.300"
                     >
-                      <Icon as={FaCertificate} />
+                      <Icon as={FaCertificate} aria-hidden="true" />
                       <Text>HKI: {project.hki}</Text>
                     </HStack>
                   )}
@@ -265,7 +267,7 @@ export default function Projects() {
                   </Heading>
                   {project.location && (
                     <Box ml={2}>
-                      <SiCanva color="#00C4CC" size="24px" />
+                      <SiCanva color="#00C4CC" size="24px" aria-hidden="true" />
                     </Box>
                   )}
                 </Flex>
@@ -319,7 +321,11 @@ export default function Projects() {
                     flex={1}
                     variant="solid"
                     colorScheme="purple"
-                    leftIcon={project.location ? undefined : <FaGithub />}
+                    leftIcon={
+                      project.location ? undefined : (
+                        <FaGithub aria-hidden="true" />
+                      )
+                    }
                     border="2px solid black"
                     boxShadow="2px 2px 0px black"
                     isDisabled={project.link === "#"}
@@ -347,7 +353,7 @@ export default function Projects() {
                       flex={1}
                       variant="outline"
                       colorScheme="pink"
-                      leftIcon={<FaGlobe />}
+                      leftIcon={<FaGlobe aria-hidden="true" />}
                       isDisabled={project.demo === "#"}
                       border="2px solid"
                       borderColor={

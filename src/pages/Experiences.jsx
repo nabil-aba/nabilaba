@@ -118,7 +118,7 @@ export default function Experiences() {
                   {exp.type}
                 </Badge>
                 <HStack color="gray.400" fontSize="sm">
-                  <Icon as={FaCalendarAlt} />
+                  <Icon as={FaCalendarAlt} aria-hidden="true" />
                   <Text>{exp.date}</Text>
                 </HStack>
               </HStack>
@@ -133,7 +133,13 @@ export default function Experiences() {
               >
                 {exp.role}
                 {exp.highlight && (
-                  <Icon as={FaTrophy} color="yellow.400" w={4} h={4} />
+                  <Icon
+                    as={FaTrophy}
+                    color="yellow.400"
+                    w={4}
+                    h={4}
+                    aria-hidden="true"
+                  />
                 )}
               </Heading>
               <Text color="purple.300" fontWeight="bold" mb={3} fontSize="sm">
@@ -170,7 +176,7 @@ export default function Experiences() {
                   size="xs"
                   variant="outline"
                   colorScheme="orange"
-                  leftIcon={<FaProjectDiagram />}
+                  leftIcon={<FaProjectDiagram aria-hidden="true" />}
                   borderRadius="full"
                   onClick={scrollToConsulting}
                   _hover={{
@@ -204,6 +210,7 @@ export default function Experiences() {
                 color="cyan.400"
                 w={4}
                 h={4}
+                aria-hidden="true"
               />
             </Box>
 

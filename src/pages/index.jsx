@@ -47,7 +47,7 @@ const LanguageSwitcher = () => {
         borderRadius="full"
         px={3}
         fontWeight="bold"
-        rightIcon={<ChevronDownIcon />}
+        rightIcon={<ChevronDownIcon aria-hidden="true" />}
         _hover={{ bg: "cyan.400", color: "black" }}
       >
         {current.flag} {current.label}
@@ -148,7 +148,7 @@ const Navbar = () => {
         <HStack display={{ md: "none" }} spacing={2}>
           <LanguageSwitcher />
           <IconButton
-            icon={<HamburgerIcon />}
+            icon={<HamburgerIcon aria-hidden="true" />}
             aria-label="Open Menu"
             onClick={onOpen}
             variant="ghost"

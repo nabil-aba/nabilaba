@@ -122,7 +122,13 @@ export default function Skills() {
             borderColor="whiteAlpha.100"
             transition={{ duration: 0.3 }}
           >
-            <Icon as={skill.icon} boxSize={12} color={skill.color} mb={4} />
+            <Icon
+              as={skill.icon}
+              boxSize={12}
+              color={skill.color}
+              mb={4}
+              aria-hidden="true"
+            />
             <Text fontWeight="bold" fontSize="lg">
               {skill.name}
             </Text>

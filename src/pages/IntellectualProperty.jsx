@@ -92,7 +92,11 @@ export default function IntellectualProperty() {
                   flexWrap="wrap"
                 >
                   <HStack>
-                    <Icon as={FaUserTie} color="orange.400" />
+                    <Icon
+                      as={FaUserTie}
+                      color="orange.400"
+                      aria-hidden="true"
+                    />
                     <Text>
                       {t.ipr.role}:{" "}
                       <Text as="span" fontWeight="bold" color="white">
@@ -101,13 +105,21 @@ export default function IntellectualProperty() {
                     </Text>
                   </HStack>
                   <HStack>
-                    <Icon as={FaCopyright} color="orange.400" />
+                    <Icon
+                      as={FaCopyright}
+                      color="orange.400"
+                      aria-hidden="true"
+                    />
                     <Text>
                       {t.ipr.year}: {ipr.year}
                     </Text>
                   </HStack>
                   <HStack>
-                    <Icon as={FaCertificate} color="orange.400" />
+                    <Icon
+                      as={FaCertificate}
+                      color="orange.400"
+                      aria-hidden="true"
+                    />
                     <Text>
                       {t.ipr.lead}: {ipr.lead}
                     </Text>
@@ -127,7 +139,7 @@ export default function IntellectualProperty() {
           colorScheme="orange"
           variant="outline"
           size="sm"
-          rightIcon={<FaExternalLinkAlt />}
+          rightIcon={<FaExternalLinkAlt aria-hidden="true" />}
           _hover={{ bg: "orange.500", color: "white" }}
         >
           {t.ipr.verify}

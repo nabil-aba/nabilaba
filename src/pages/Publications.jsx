@@ -42,7 +42,12 @@ export default function Publications() {
             borderColor="whiteAlpha.100"
           >
             <Flex justify="space-between" align="start" mb={4}>
-              <Icon as={FaBook} color="purple.400" boxSize={6} />
+              <Icon
+                as={FaBook}
+                color="purple.400"
+                boxSize={6}
+                aria-hidden="true"
+              />
               <Badge colorScheme="purple" variant="outline">
                 {paper.year}
               </Badge>
@@ -67,7 +72,7 @@ export default function Publications() {
               fontSize="sm"
             >
               {t.publications.readPaper}{" "}
-              <Icon as={FaExternalLinkAlt} boxSize={3} />
+              <Icon as={FaExternalLinkAlt} boxSize={3} aria-hidden="true" />
             </Link>
           </MotionBox>
         ))}

@@ -75,21 +75,27 @@ export default function AIPerspective() {
             </Text>
             <Wrap spacing={4}>
               <Tag size="lg" colorScheme="orange" borderRadius="full">
-                <Icon as={FaStackOverflow} mr={2} />{" "}
+                <Icon as={FaStackOverflow} mr={2} aria-hidden="true" />{" "}
                 {t.aiPerspective.tags.stackoverflow}
               </Tag>
               <Tag size="lg" colorScheme="green" borderRadius="full">
-                <Icon as={SiGeeksforgeeks} mr={2} />{" "}
+                <Icon as={SiGeeksforgeeks} mr={2} aria-hidden="true" />{" "}
                 {t.aiPerspective.tags.geeksforgeeks}
               </Tag>
               <Tag size="lg" colorScheme="purple" borderRadius="full">
-                <Icon as={FaBrain} mr={2} />{" "}
+                <Icon as={FaBrain} mr={2} aria-hidden="true" />{" "}
                 {t.aiPerspective.tags.criticalThinking}
               </Tag>
             </Wrap>
           </Box>
           <Box display={{ base: "none", md: "block" }}>
-            <Icon as={FaRobot} w={40} h={40} color="whiteAlpha.100" />
+            <Icon
+              as={FaRobot}
+              w={40}
+              h={40}
+              color="whiteAlpha.100"
+              aria-hidden="true"
+            />
           </Box>
         </Flex>
       </MotionBox>
