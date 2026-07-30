@@ -67,7 +67,8 @@ export default function Education() {
               <Box flex={1}>
                 <HStack mb={3} flexWrap="wrap" spacing={2}>
                   <Badge
-                    colorScheme={index === 0 ? "yellow" : "gray"}
+                    bg={index === 0 ? "yellow.400" : "gray.600"}
+                    color={index === 0 ? "black" : "white"}
                     variant="solid"
                     borderRadius="full"
                     px={3}

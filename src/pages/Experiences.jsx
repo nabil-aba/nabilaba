@@ -110,7 +110,8 @@ export default function Experiences() {
             >
               <HStack justify="space-between" mb={2}>
                 <Badge
-                  colorScheme={exp.highlight ? "cyan" : "gray"}
+                  bg={exp.highlight ? "cyan.400" : "gray.600"}
+                  color={exp.highlight ? "black" : "white"}
                   variant="solid"
                   borderRadius="full"
                   px={3}

@@ -28,7 +28,7 @@ export default function Footer() {
         <Heading size="lg" mb={6}>
           {t.footer.heading}
         </Heading>
-        <Text color="gray.400" mb={8}>
+        <Text color="gray.300" mb={8}>
           {t.footer.sub}
         </Text>
         <Flex justify="center" gap={6} mb={8}>
@@ -71,7 +71,7 @@ export default function Footer() {
             />
           </Link>
         </Flex>
-        <Text fontSize="sm" color="gray.600">
+        <Text fontSize="sm" color="gray.400">
           &copy; {new Date().getFullYear()} Nabil Aziz Bima Anggita (Nabil Aba).{" "}
           <br />
           {t.footer.copyright}

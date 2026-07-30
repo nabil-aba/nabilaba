@@ -64,20 +64,25 @@ export default function Projects() {
             key={tab}
             onClick={() => setActiveTab(tab)}
             variant={activeTab === tab ? "solid" : "ghost"}
-            colorScheme={
+            bg={
               activeTab === tab
                 ? tab === "Consulting"
-                  ? "orange"
-                  : "purple"
-                : "gray"
+                  ? "orange.600"
+                  : "purple.600"
+                : "transparent"
             }
-            color={activeTab === tab ? "white" : "gray.400"}
+            color={activeTab === tab ? "white" : "gray.200"}
             borderRadius="full"
             size="sm"
             px={8}
             fontWeight="bold"
             _hover={{
-              bg: activeTab === tab ? undefined : "whiteAlpha.200",
+              bg:
+                activeTab === tab
+                  ? tab === "Consulting"
+                    ? "orange.700"
+                    : "purple.700"
+                  : "whiteAlpha.300",
               color: "white",
             }}
           >
@@ -118,7 +123,8 @@ export default function Projects() {
                   </Heading>
                   {project.inProgress && (
                     <Badge
-                      colorScheme="orange"
+                      bg="orange.500"
+                      color="white"
                       variant="solid"
                       borderRadius="full"
                       px={3}
@@ -133,7 +139,8 @@ export default function Projects() {
                 <HStack spacing={2}>
                   {project.isAuthor ? (
                     <Badge
-                      colorScheme="green"
+                      bg="green.600"
+                      color="white"
                       variant="solid"
                       borderRadius="full"
                       px={2}
@@ -143,7 +150,8 @@ export default function Projects() {
                     </Badge>
                   ) : (
                     <Badge
-                      colorScheme="gray"
+                      borderColor="gray.400"
+                      color="gray.300"
                       variant="outline"
                       borderRadius="full"
                       px={2}
@@ -174,7 +182,8 @@ export default function Projects() {
                       key={idx}
                       size="sm"
                       variant="subtle"
-                      colorScheme="orange"
+                      bg="orange.900"
+                      color="orange.200"
                       borderRadius="full"
                     >
                       {tag}
@@ -304,7 +313,8 @@ export default function Projects() {
                       key={idx}
                       size="sm"
                       variant="subtle"
-                      colorScheme="purple"
+                      bg="purple.900"
+                      color="purple.200"
                       borderRadius="full"
                     >
                       {tag}
@@ -320,7 +330,8 @@ export default function Projects() {
                     size="sm"
                     flex={1}
                     variant="solid"
-                    colorScheme="purple"
+                    bg="purple.600"
+                    color="white"
                     leftIcon={
                       project.location ? undefined : (
                         <FaGithub aria-hidden="true" />
@@ -330,6 +341,7 @@ export default function Projects() {
                     boxShadow="2px 2px 0px black"
                     isDisabled={project.link === "#"}
                     _hover={{
+                      bg: "purple.700",
                       boxShadow:
                         project.link === "#"
                           ? "2px 2px 0px black"

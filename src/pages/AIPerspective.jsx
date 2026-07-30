@@ -6,7 +6,6 @@ import {
   Icon,
   Tag,
   Text,
-  Wrap,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FaBrain, FaRobot, FaStackOverflow } from "react-icons/fa";
@@ -73,7 +72,7 @@ export default function AIPerspective() {
             <Text color="gray.400" mb={6}>
               {t.aiPerspective.p2}
             </Text>
-            <Wrap spacing={4}>
+            <Flex wrap="wrap" gap={4}>
               <Tag size="lg" colorScheme="orange" borderRadius="full">
                 <Icon as={FaStackOverflow} mr={2} aria-hidden="true" />{" "}
                 {t.aiPerspective.tags.stackoverflow}
@@ -86,7 +85,7 @@ export default function AIPerspective() {
                 <Icon as={FaBrain} mr={2} aria-hidden="true" />{" "}
                 {t.aiPerspective.tags.criticalThinking}
               </Tag>
-            </Wrap>
+            </Flex>
           </Box>
           <Box display={{ base: "none", md: "block" }}>
             <Icon
