@@ -13,6 +13,7 @@ jobs:
   build-frontend:
     name: Build Frontend
     runs-on: ubuntu-latest
+
     steps:
       - name: Get latest code
         uses: actions/checkout@v4
@@ -24,22 +25,27 @@ jobs:
 
       - name: Cache Yarn
         uses: actions/cache@v4
+        id: yarn-cache
         with:
-          path: "**/node_modules"
+          path: |
+            **/node_modules
+            **/.eslintcache
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install & Build
-        run: |
-          yarn install
-          yarn build
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build Frontend
+        run: yarn build
 
       - name: Upload Frontend Build Files
         uses: actions/upload-artifact@v4
         with:
           name: frontend-production-files
-          path: dist
+          path: ./dist/
           include-hidden-files: true
 
   deploy:
@@ -53,14 +59,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: frontend-production-files
-          path: ./
+          path: ./dist
 
-      - name: Deploy all files to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          port: 21
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+      - name: 🚀 Sync to Server via SSH/Rsync
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-avz --delete --exclude='.user.ini'"
+          SOURCE: "./dist/"
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          TARGET: ${{ secrets.SSH_TARGET_DIR }}
