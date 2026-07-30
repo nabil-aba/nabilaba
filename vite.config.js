@@ -11,14 +11,19 @@ export default defineConfig({
     },
   },
   build: {
+    target: "esnext",
+    minify: "esbuild",
+    cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("framer-motion")) return "vendor-framer";
-            if (id.includes("@chakra-ui") || id.includes("@emotion"))
-              return "vendor-chakra";
-            if (id.includes("react-icons")) return "vendor-icons";
+            if (id.includes("framer-motion")) return "framer";
+            if (id.includes("@chakra-ui")) return "chakra";
+            if (id.includes("@emotion")) return "emotion";
+            if (id.includes("react-icons")) return "icons";
+            if (id.includes("react-dom") || id.includes("react/"))
+              return "react-core";
             return "vendor";
           }
         },

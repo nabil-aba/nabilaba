@@ -194,8 +194,12 @@ function App() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsMounted(true), 50);
-    return () => clearTimeout(timer);
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(() => setIsMounted(true));
+    } else {
+      const timer = setTimeout(() => setIsMounted(true), 250);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
