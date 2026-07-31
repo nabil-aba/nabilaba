@@ -23,12 +23,6 @@ export default defineConfig({
             "react-router-dom",
             "react-helmet-async",
           ],
-          "vendor-chakra": [
-            "@chakra-ui/react",
-            "@chakra-ui/icons",
-            "@emotion/react",
-            "@emotion/styled",
-          ],
           "vendor-framer": ["framer-motion"],
           "vendor-icons": ["react-icons"],
         },

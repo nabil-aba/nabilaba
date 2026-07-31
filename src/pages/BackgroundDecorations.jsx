@@ -7,7 +7,6 @@ const MotionText = motion.create(Text);
 const AnimatedWavyDashedLine = ({ top, duration, color }) => {
   const dashArrayValue = "15 30";
   const totalDashLength = 45;
-
   return (
     <Box
       position="absolute"
@@ -60,11 +59,8 @@ const GridBackground = () => (
       left="0"
       w="100%"
       h="200%"
-      css={{
-        backgroundImage:
-          "linear-gradient(rgba(79, 209, 197, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 209, 197, 0.5) 1px, transparent 1px)",
-        backgroundSize: "50px 50px",
-      }}
+      backgroundImage="linear-gradient(rgba(79, 209, 197, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 209, 197, 0.5) 1px, transparent 1px)"
+      backgroundSize="50px 50px"
       animate={{ y: ["0%", "50%"] }}
       transition={{
         duration: 15,
@@ -77,10 +73,10 @@ const GridBackground = () => (
 
 export default function BackgroundDecorations() {
   const jpChars = [
-    { char: "創造", x: "10%", y: "20%", delay: 0 },
-    { char: "技術", x: "80%", y: "15%", delay: 2 },
-    { char: "未来", x: "20%", y: "70%", delay: 4 },
-    { char: "革新", x: "85%", y: "60%", delay: 1 },
+    { char: " ", x: "10%", y: "20%", delay: 0 },
+    { char: " ", x: "80%", y: "15%", delay: 2 },
+    { char: " ", x: "20%", y: "70%", delay: 4 },
+    { char: " ", x: "85%", y: "60%", delay: 1 },
   ];
 
   const shapes = [
@@ -143,7 +139,7 @@ export default function BackgroundDecorations() {
           h={shape.size}
           border="2px solid"
           borderColor={shape.color}
-          boxShadow={`0 0 20px ${shape.color}`}
+          boxShadow={`0 0 20px var(--chakra-colors-${shape.color.replace(".", "-")})`}
           borderRadius={shape.type === "donut" ? "full" : "lg"}
           animate={{
             rotate: 360,
