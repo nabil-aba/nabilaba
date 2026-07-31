@@ -17,7 +17,7 @@ import {
   VStack,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy } from "react";
 
 import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
@@ -113,7 +113,6 @@ const Navbar = () => {
     { label: t.navbar.projects, anchor: "projects" },
     { label: t.navbar.contact, anchor: "contact" },
   ];
-
   const handleScroll = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -122,7 +121,6 @@ const Navbar = () => {
       window.history.replaceState(null, "", window.location.pathname);
     }
   };
-
   return (
     <Box
       as="nav"
@@ -214,61 +212,35 @@ const Navbar = () => {
 export default function Index() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
-  const [startLoad, setStartLoad] = useState(false);
-
-  useEffect(() => {
-    const triggerLoad = () => setStartLoad(true);
-    const events = ["scroll", "mousemove", "touchstart", "keydown"];
-
-    events.forEach((event) =>
-      window.addEventListener(event, triggerLoad, {
-        once: true,
-        passive: true,
-      }),
-    );
-
-    const timer = setTimeout(triggerLoad, 3500);
-
-    return () => {
-      events.forEach((event) => window.removeEventListener(event, triggerLoad));
-      clearTimeout(timer);
-    };
-  }, []);
 
   return (
-    <Box minH="100dvh">
+    <Box minH="100dvh" isolation="isolate">
       <Seo title="Portfolio" description={plainBio} />
 
-      {startLoad && (
-        <Suspense fallback={null}>
-          <BackgroundDecorations />
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        <BackgroundDecorations />
+      </Suspense>
 
       <Navbar />
 
       <main>
         <Hero />
 
-        {startLoad && (
-          <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
-            <About />
-            <Education />
-            <Experiences />
-            <Publications />
-            <IntellectualProperty />
-            <Skills />
-            <Projects />
-            <AIPerspective />
-          </Suspense>
-        )}
+        <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
+          <About />
+          <Education />
+          <Experiences />
+          <Publications />
+          <IntellectualProperty />
+          <Skills />
+          <Projects />
+          <AIPerspective />
+        </Suspense>
       </main>
 
-      {startLoad && (
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </Box>
   );
 }
