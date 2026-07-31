@@ -1,8 +1,5 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-
-const MotionBox = motion.create(Box);
-const MotionText = motion.create(Text);
 
 const AnimatedWavyDashedLine = ({ top, duration, color }) => {
   const dashArrayValue = "15 30";
@@ -53,14 +50,17 @@ const GridBackground = () => (
     transform="perspective(500px) rotateX(60deg)"
     opacity="0.2"
   >
-    <MotionBox
-      position="absolute"
-      top="-100%"
-      left="0"
-      w="100%"
-      h="200%"
-      backgroundImage="linear-gradient(rgba(79, 209, 197, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 209, 197, 0.5) 1px, transparent 1px)"
-      backgroundSize="50px 50px"
+    <motion.div
+      style={{
+        position: "absolute",
+        top: "-100%",
+        left: "0",
+        width: "100%",
+        height: "200%",
+        backgroundImage:
+          "linear-gradient(rgba(79, 209, 197, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 209, 197, 0.5) 1px, transparent 1px)",
+        backgroundSize: "50px 50px",
+      }}
       animate={{ y: ["0%", "50%"] }}
       transition={{
         duration: 15,
@@ -73,16 +73,34 @@ const GridBackground = () => (
 
 export default function BackgroundDecorations() {
   const jpChars = [
-    { char: " ", x: "10%", y: "20%", delay: 0 },
-    { char: " ", x: "80%", y: "15%", delay: 2 },
-    { char: " ", x: "20%", y: "70%", delay: 4 },
-    { char: " ", x: "85%", y: "60%", delay: 1 },
+    { char: "創造", x: "10%", y: "20%", delay: 0 },
+    { char: "技術", x: "80%", y: "15%", delay: 2 },
+    { char: "未来", x: "20%", y: "70%", delay: 4 },
+    { char: "革新", x: "85%", y: "60%", delay: 1 },
   ];
 
   const shapes = [
-    { type: "cube", x: "15%", y: "30%", size: "60px", color: "cyan.400" },
-    { type: "donut", x: "75%", y: "40%", size: "80px", color: "purple.400" },
-    { type: "pyramid", x: "50%", y: "85%", size: "50px", color: "pink.400" },
+    {
+      type: "cube",
+      x: "15%",
+      y: "30%",
+      size: "60px",
+      color: "var(--chakra-colors-cyan-400)",
+    },
+    {
+      type: "donut",
+      x: "75%",
+      y: "40%",
+      size: "80px",
+      color: "var(--chakra-colors-purple-400)",
+    },
+    {
+      type: "pyramid",
+      x: "50%",
+      y: "85%",
+      size: "50px",
+      color: "var(--chakra-colors-pink-400)",
+    },
   ];
 
   return (
@@ -101,6 +119,7 @@ export default function BackgroundDecorations() {
       transform="translateZ(0)"
     >
       <GridBackground />
+
       <AnimatedWavyDashedLine
         top="20%"
         duration={10}
@@ -113,34 +132,37 @@ export default function BackgroundDecorations() {
       />
 
       {jpChars.map((item, i) => (
-        <MotionText
+        <motion.div
           key={i}
-          position="absolute"
-          left={item.x}
-          top={item.y}
-          fontSize="4xl"
-          fontWeight="bold"
-          color="whiteAlpha.100"
-          fontFamily="'Noto Sans JP', sans-serif"
+          style={{
+            position: "absolute",
+            left: item.x,
+            top: item.y,
+            fontSize: "2.25rem",
+            fontWeight: "bold",
+            color: "rgba(255, 255, 255, 0.08)",
+            fontFamily: "'Noto Sans JP', sans-serif",
+          }}
           animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 5, delay: item.delay, repeat: Infinity }}
         >
           {item.char}
-        </MotionText>
+        </motion.div>
       ))}
 
       {shapes.map((shape, i) => (
-        <MotionBox
+        <motion.div
           key={`shape-${i}`}
-          position="absolute"
-          left={shape.x}
-          top={shape.y}
-          w={shape.size}
-          h={shape.size}
-          border="2px solid"
-          borderColor={shape.color}
-          boxShadow={`0 0 20px var(--chakra-colors-${shape.color.replace(".", "-")})`}
-          borderRadius={shape.type === "donut" ? "full" : "lg"}
+          style={{
+            position: "absolute",
+            left: shape.x,
+            top: shape.y,
+            width: shape.size,
+            height: shape.size,
+            border: `2px solid ${shape.color}`,
+            boxShadow: `0 0 20px ${shape.color}`,
+            borderRadius: shape.type === "donut" ? "50%" : "0.5rem",
+          }}
           animate={{
             rotate: 360,
             y: [0, 30, 0],
@@ -149,18 +171,19 @@ export default function BackgroundDecorations() {
             rotate: { duration: 10 + i * 2, repeat: Infinity, ease: "linear" },
             y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
           }}
-          _after={{
-            content: '""',
-            position: "absolute",
-            top: "20%",
-            left: "20%",
-            right: "20%",
-            bottom: "20%",
-            border: "1px solid",
-            borderColor: "whiteAlpha.500",
-            borderRadius: "inherit",
-          }}
-        />
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "20%",
+              left: "20%",
+              right: "20%",
+              bottom: "20%",
+              border: "1px solid rgba(255, 255, 255, 0.4)",
+              borderRadius: "inherit",
+            }}
+          />
+        </motion.div>
       ))}
     </Box>
   );
