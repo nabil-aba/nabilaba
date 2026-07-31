@@ -17,7 +17,7 @@ import {
   VStack,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 
 import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
@@ -213,34 +213,46 @@ export default function Index() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Box minH="100dvh" isolation="isolate">
       <Seo title="Portfolio" description={plainBio} />
-
-      <Suspense fallback={null}>
-        <BackgroundDecorations />
-      </Suspense>
 
       <Navbar />
 
       <main>
         <Hero />
 
-        <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
-          <About />
-          <Education />
-          <Experiences />
-          <Publications />
-          <IntellectualProperty />
-          <Skills />
-          <Projects />
-          <AIPerspective />
-        </Suspense>
+        {isMounted && (
+          <Suspense fallback={null}>
+            <BackgroundDecorations />
+          </Suspense>
+        )}
+
+        {isMounted && (
+          <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
+            <About />
+            <Education />
+            <Experiences />
+            <Publications />
+            <IntellectualProperty />
+            <Skills />
+            <Projects />
+            <AIPerspective />
+          </Suspense>
+        )}
       </main>
 
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      {isMounted && (
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      )}
     </Box>
   );
 }
