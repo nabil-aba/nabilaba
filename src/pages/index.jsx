@@ -213,63 +213,34 @@ export default function Index() {
   const { t } = useLang();
   const plainBio = t.hero.bio.replace(/<[^>]+>/g, "");
 
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsMounted(true);
-    }, 300);
-
-    const triggerLoad = () => setIsMounted(true);
-    const events = ["scroll", "mousemove", "touchstart", "keydown"];
-
-    events.forEach((event) =>
-      window.addEventListener(event, triggerLoad, {
-        once: true,
-        passive: true,
-      }),
-    );
-
-    return () => {
-      clearTimeout(timer);
-      events.forEach((event) => window.removeEventListener(event, triggerLoad));
-    };
-  }, []);
-
   return (
     <Box minH="100dvh" isolation="isolate">
       <Seo title="Portfolio" description={plainBio} />
+
+      <Suspense fallback={null}>
+        <BackgroundDecorations />
+      </Suspense>
 
       <Navbar />
 
       <main>
         <Hero />
 
-        {isMounted && (
-          <Suspense fallback={null}>
-            <BackgroundDecorations />
-          </Suspense>
-        )}
-
-        {isMounted && (
-          <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
-            <About />
-            <Education />
-            <Experiences />
-            <Publications />
-            <IntellectualProperty />
-            <Skills />
-            <Projects />
-            <AIPerspective />
-          </Suspense>
-        )}
+        <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
+          <About />
+          <Education />
+          <Experiences />
+          <Publications />
+          <IntellectualProperty />
+          <Skills />
+          <Projects />
+          <AIPerspective />
+        </Suspense>
       </main>
 
-      {isMounted && (
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </Box>
   );
 }
