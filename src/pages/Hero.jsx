@@ -25,6 +25,7 @@ export default function Hero() {
       pt={20}
       position="relative"
       id="home"
+      bg="transparent"
     >
       <Box>
         <Text color="cyan.400" letterSpacing="widest" fontWeight="bold" mb={2}>
