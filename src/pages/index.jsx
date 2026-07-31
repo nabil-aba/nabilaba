@@ -216,7 +216,24 @@ export default function Index() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 300);
+
+    const triggerLoad = () => setIsMounted(true);
+    const events = ["scroll", "mousemove", "touchstart", "keydown"];
+
+    events.forEach((event) =>
+      window.addEventListener(event, triggerLoad, {
+        once: true,
+        passive: true,
+      }),
+    );
+
+    return () => {
+      clearTimeout(timer);
+      events.forEach((event) => window.removeEventListener(event, triggerLoad));
+    };
   }, []);
 
   return (
