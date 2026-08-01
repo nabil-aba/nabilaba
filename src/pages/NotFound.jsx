@@ -14,6 +14,7 @@ export default function NotFound() {
       <Seo title={t.notFound.title} description={t.notFound.desc} />
       <BackgroundDecorations />
       <Flex
+        as="main"
         h="100dvh"
         align="center"
         justify="center"
