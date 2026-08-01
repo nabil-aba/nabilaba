@@ -6,8 +6,6 @@ import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
 import BackgroundDecorations from "./BackgroundDecorations.jsx";
 
-const MotionBox = motion.create(Box);
-
 export default function NotFound() {
   const { t } = useLang();
 
@@ -25,50 +23,38 @@ export default function NotFound() {
         zIndex={1}
         px={4}
       >
-        <MotionBox
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+        <Heading
+          fontSize={{ base: "8xl", md: "9xl" }}
+          bgGradient="linear(to-r, cyan.400, purple.500, pink.400)"
+          bgClip="text"
+          fontWeight="900"
+          mb={2}
         >
-          <Heading
-            fontSize={{ base: "8xl", md: "9xl" }}
-            bgGradient="linear(to-r, cyan.400, purple.500, pink.400)"
-            bgClip="text"
-            fontWeight="900"
-            mb={2}
-          >
-            {t.notFound.heading}
-          </Heading>
-          <Text
-            fontSize={{ base: "xl", md: "2xl" }}
-            color="gray.300"
-            mb={8}
-            fontWeight="bold"
-            letterSpacing="widest"
-          >
-            {t.notFound.sub}
-          </Text>
-          <Button
-            as={Link}
-            to="/"
-            size="lg"
-            colorScheme="purple"
-            borderRadius="full"
-            px={8}
-            border="2px solid black"
-            boxShadow="4px 4px 0px black"
-            _hover={{
-              boxShadow: "6px 6px 0px black",
-              transform: "translateY(-2px)",
-            }}
-            _active={{
-              boxShadow: "2px 2px 0px black",
-              transform: "translateY(2px)",
-            }}
-          >
-            {t.notFound.btn}
-          </Button>
-        </MotionBox>
+          {t.notFound.heading}
+        </Heading>
+        <Text
+          fontSize={{ base: "xl", md: "2xl" }}
+          color="gray.300"
+          mb={8}
+          fontWeight="bold"
+          letterSpacing="widest"
+        >
+          {t.notFound.sub}
+        </Text>
+        <Button
+          as={Link}
+          to="/"
+          size="lg"
+          borderRadius="full"
+          px={8}
+          border="2px solid black"
+          bg="purple.500"
+          color="white"
+          _hover={{ bg: "purple.600" }}
+          _active={{ bg: "purple.700" }}
+        >
+          {t.notFound.btn}
+        </Button>
       </Flex>
     </Box>
   );
