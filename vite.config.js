@@ -29,7 +29,11 @@ export default defineConfig(({ isSsrBuild }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    esbuild: {
+      drop: ["console", "debugger"],
+    },
     build: {
+      target: "esnext",
       rollupOptions: {
         output: {
           manualChunks: isSsrBuild
