@@ -29,6 +29,15 @@ export default defineConfig(({ isSsrBuild }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    optimizeDeps: {
+      include: [
+        "@chakra-ui/react",
+        "@emotion/react",
+        "@emotion/styled",
+        "framer-motion",
+        "react-icons",
+      ],
+    },
     esbuild: {
       drop: ["console", "debugger"],
     },

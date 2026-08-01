@@ -22,7 +22,7 @@ const app = (
   </ChakraProvider>
 );
 
-if (rootElement.hasChildNodes()) {
+const hydrateApp = () => {
   let isHydrated = false;
 
   const hydrate = () => {
@@ -41,6 +41,10 @@ if (rootElement.hasChildNodes()) {
   });
 
   setTimeout(hydrate, 3500);
-} else {
+};
+
+if (import.meta.env.DEV) {
   createRoot(rootElement).render(app);
+} else {
+  hydrateApp();
 }
