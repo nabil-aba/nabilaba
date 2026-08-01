@@ -4,30 +4,36 @@ import path from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: "ssg-preview-router",
+      configurePreviewServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url.includes(".")) {
+            return next();
+          }
+
+          const url = req.url.replace(/\/$/, "") || "/";
+
+          if (url === "/") {
+            req.url = "/index.html";
+          } else if (url === "/id") {
+            req.url = "/id/index.html";
+          } else if (url.startsWith("/id/")) {
+            req.url = "/id/404.html";
+          } else {
+            req.url = "/404.html";
+          }
+
+          next();
+        });
+      },
+    },
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  },
-  build: {
-    target: "esnext",
-    minify: "esbuild",
-    cssMinify: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          "vendor-react": [
-            "react",
-            "react-dom",
-            "react-router-dom",
-            "react-helmet-async",
-          ],
-          "vendor-framer": ["framer-motion"],
-          "vendor-icons": ["react-icons"],
-        },
-      },
-    },
-    chunkSizeWarningLimit: 1000,
   },
 });

@@ -17,23 +17,22 @@ import {
   VStack,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Seo from "../components/Seo/index.jsx";
 import { useLang } from "../context/LanguageContext";
 import { LANGUAGES } from "../locales";
+import AIPerspective from "./AIPerspective";
+import About from "./About";
+import BackgroundDecorations from "./BackgroundDecorations";
+import Education from "./Education";
+import Experiences from "./Experiences";
+import Footer from "./Footer";
 import Hero from "./Hero";
-
-const About = lazy(() => import("./About"));
-const Education = lazy(() => import("./Education"));
-const Experiences = lazy(() => import("./Experiences"));
-const Publications = lazy(() => import("./Publications"));
-const IntellectualProperty = lazy(() => import("./IntellectualProperty"));
-const Skills = lazy(() => import("./Skills"));
-const Projects = lazy(() => import("./Projects"));
-const AIPerspective = lazy(() => import("./AIPerspective"));
-const Footer = lazy(() => import("./Footer"));
-const BackgroundDecorations = lazy(() => import("./BackgroundDecorations"));
+import IntellectualProperty from "./IntellectualProperty";
+import Projects from "./Projects";
+import Publications from "./Publications";
+import Skills from "./Skills";
 
 const ChevronIcon = () => (
   <svg
@@ -68,7 +67,8 @@ const LanguageSwitcher = () => {
         as={Button}
         size="xs"
         variant="outline"
-        colorScheme="cyan"
+        borderColor="cyan.400"
+        color="cyan.400"
         borderRadius="full"
         px={3}
         fontWeight="bold"
@@ -113,6 +113,7 @@ const Navbar = () => {
     { label: t.navbar.projects, anchor: "projects" },
     { label: t.navbar.contact, anchor: "contact" },
   ];
+
   const handleScroll = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -121,6 +122,7 @@ const Navbar = () => {
       window.history.replaceState(null, "", window.location.pathname);
     }
   };
+
   return (
     <Box
       as="nav"
@@ -216,31 +218,20 @@ export default function Index() {
   return (
     <Box minH="100dvh" isolation="isolate">
       <Seo title="Portfolio" description={plainBio} />
-
-      <Suspense fallback={null}>
-        <BackgroundDecorations />
-      </Suspense>
-
+      <BackgroundDecorations />
       <Navbar />
-
       <main>
         <Hero />
-
-        <Suspense fallback={<Box minH="100vh" bg="#0a0a12" />}>
-          <About />
-          <Education />
-          <Experiences />
-          <Publications />
-          <IntellectualProperty />
-          <Skills />
-          <Projects />
-          <AIPerspective />
-        </Suspense>
+        <About />
+        <Education />
+        <Experiences />
+        <Publications />
+        <IntellectualProperty />
+        <Skills />
+        <Projects />
+        <AIPerspective />
       </main>
-
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </Box>
   );
 }

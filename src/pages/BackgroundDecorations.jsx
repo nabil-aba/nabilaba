@@ -143,7 +143,7 @@ export default function BackgroundDecorations() {
             color: "rgba(255, 255, 255, 0.08)",
             fontFamily: "'Noto Sans JP', sans-serif",
           }}
-          animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
+          animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5, delay: item.delay, repeat: Infinity }}
         >
           {item.char}

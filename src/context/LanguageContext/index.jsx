@@ -1,8 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import locales, { DEFAULT_LANG } from "../../locales";
 
 const STORAGE_KEY = "nabilaba_lang";
-
 const LanguageContext = createContext();
 
 function buildProxy(langData, fallbackData) {
@@ -33,21 +34,50 @@ function buildProxy(langData, fallbackData) {
         ) {
           return sectionData;
         }
+
         return fallbackSection;
       },
     },
   );
 }
 
-export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(
-    () => localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG,
-  );
+export function LanguageProvider({ children, serverLang }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const getInitialLang = () => {
+    if (serverLang) return serverLang;
+    if (typeof window !== "undefined") {
+      return window.location.pathname.startsWith("/id") ? "id" : "en";
+    }
+    return DEFAULT_LANG;
+  };
+
+  const [lang, setLang] = useState(getInitialLang);
+
+  useEffect(() => {
+    const currentLang = location.pathname.startsWith("/id") ? "id" : "en";
+    if (lang !== currentLang) {
+      setLang(currentLang);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const savedLang = window.localStorage.getItem(STORAGE_KEY);
+    const currentPath = location.pathname;
+
+    if (savedLang === "id" && currentPath === "/") {
+      navigate("/id", { replace: true });
+    } else if (savedLang === "en" && currentPath.startsWith("/id")) {
+      navigate("/", { replace: true });
+    }
+  }, []);
 
   const changeLang = (code) => {
     if (locales[code]) {
-      localStorage.setItem(STORAGE_KEY, code);
+      window.localStorage.setItem(STORAGE_KEY, code);
       setLang(code);
+      navigate(code === "id" ? "/id" : "/");
     }
   };
 

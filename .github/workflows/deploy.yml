@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frontend-production-files
-          path: ./dist/
+          path: ./dist/client/
           include-hidden-files: true
 
   deploy:
@@ -59,14 +59,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: frontend-production-files
-          path: ./dist
+          path: ./dist/client
 
       - name: 🚀 Sync to Server via SSH/Rsync
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-avz --delete --exclude='.user.ini'"
-          SOURCE: "./dist/"
+          SOURCE: "./dist/client/"
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
           REMOTE_USER: ${{ secrets.SSH_USERNAME }}

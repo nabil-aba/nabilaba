@@ -25,7 +25,6 @@ export default function Hero() {
       pt={20}
       position="relative"
       id="home"
-      bg="transparent"
     >
       <Box>
         <Text color="cyan.400" letterSpacing="widest" fontWeight="bold" mb={2}>
@@ -65,7 +64,10 @@ export default function Hero() {
           <Button
             onClick={handleScrollToProjects}
             size="lg"
-            colorScheme="purple"
+            bg="purple.500"
+            color="white"
+            _hover={{ bg: "purple.600" }}
+            _active={{ bg: "purple.700" }}
             borderRadius="full"
             px={8}
           >
@@ -77,6 +79,9 @@ export default function Hero() {
             target="_blank"
             size="lg"
             variant="outline"
+            color="white"
+            borderColor="whiteAlpha.400"
+            _hover={{ bg: "whiteAlpha.200" }}
             borderRadius="full"
             leftIcon={<FaGithub aria-hidden="true" />}
           >
