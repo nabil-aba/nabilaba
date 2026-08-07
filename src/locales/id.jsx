@@ -32,7 +32,7 @@ const id = {
     viewWork: "Lihat Karya Saya",
   },
   about: {
-    title: "SIAPA AKU?",
+    title: "SIAPA SAYA?",
     p1: "Saya <b>Nabil Aziz Bima Anggita</b>, lulusan <b>Informatika</b> dari <b>Universitas Muhammadiyah Surakarta</b> – dengan gelar <b>Sarjana (S.Kom)</b> dan <b>Magister (M.Kom)</b> Informatika.",
     p2: "Saya memiliki minat mendalam pada <b>Fullstack Engineering</b>, modifikasi Android OS, dan shell scripting.",
     p3: "Saya suka mengeksplorasi perpaduan logika dan kreativitas melalui kode.",
